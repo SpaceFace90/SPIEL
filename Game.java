@@ -1,3 +1,6 @@
+import java.util.Random;
+import java.util.Scanner;
+
 public class Game {
 
     private String spieler;
@@ -8,6 +11,36 @@ public class Game {
     private int range;
     private String hint;
 
-        
+    public void spielen() {
+        Scanner scanner = new Scanner(System.in)
+        Random random = new Random();
+
+        range = 100;
+        zielZahl = random.nextInt(range) +1;
+        spielerVersuche = 0;
+        guess = 0;
+
+        System.out.println("Ich denke an eine Zahl zwischen 1 und " + range + ".");
+
+        while (guess != zielZahl) {
+            System.out.print("Dein Tipp: ");
+            guess = scanner.nextInt();
+            spielerVersuche++;
+
+            if (guess < zielZahl) {
+                hint = "Zu klein";
+            } else if (guess > zielZahl) {
+                hint = "Zu groß";
+            } else {
+                hint = "Richtig! Du hast " + spielerVersuche + " Versuche gebraucht.";
+            }
+            System.out.println(hint);
+        }
+        scanner.close();
+    }
+
+    public static void main(String[] args) {
+        Game spiel = new Game();
+        spiel.spielen();
     }
 }
