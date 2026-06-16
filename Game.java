@@ -10,9 +10,16 @@ public class Game {
     private int maxVersuche;
     private int range;
     private String hint;
+    private Difficulty difficulty;
+   
 
     public void spielen() {
         Scanner scanner = new Scanner(System.in);
+
+        range = difficulty.getRange();
+        maxVersuche = difficulty.getMaxVersuche();
+        zielZahl = random.nextInt(range) + 1;
+
         Random random = new Random();
 
         maxVersuche = 5;
