@@ -3,8 +3,8 @@ import java.util.Scanner;
 
 public class Game {
 
-    private String spieler;
-    private int spielerVersuche;
+    // private String spieler; #kommt von Spieler
+    // private int spielerVersuche;
     private int guess;
     private int zielZahl;
     private int maxVersuche;
@@ -12,11 +12,12 @@ public class Game {
     private String hint;
 
     public void spielen() {
-        Scanner scanner = new Scanner(System.in)
+        Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
+        maxVersuche = 5;
         range = 100;
-        zielZahl = random.nextInt(range) +1;
+        zielZahl = random.nextInt(range) + 1;
         spielerVersuche = 0;
         guess = 0;
 
@@ -27,6 +28,12 @@ public class Game {
             guess = scanner.nextInt();
             spielerVersuche++;
 
+            if (spielerVersuche >= maxVersuche) {
+                System.out.println("You Lose, du hast die maximale Anzahl von " + maxVersuche + " gebraucht.\n" +
+                        "Die richtige Zahl war " + zielZahl);
+                break;
+            }
+
             if (guess < zielZahl) {
                 hint = "Zu klein";
             } else if (guess > zielZahl) {
@@ -36,6 +43,7 @@ public class Game {
             }
             System.out.println(hint);
         }
+
         scanner.close();
     }
 

@@ -22,7 +22,6 @@
 | `+` | hintGeben(zielZahl : int, guess : int) | void |
 | `+` | spielerVersuche(spielerVersuche : int) | void |
 | `+` | gameResult() | void |
-
-> **Legende:** `-` = private, `+` = public
+| `+` | chooseDifficulty() | void | 
 
 ---
