@@ -65,7 +65,7 @@ public class Game {
         Spieler spieler = new Spieler("Anes");
         Difficulty difficulty = Difficulty.vonNummer(1);
 
-        Game spiel = new Game();
+        Game spiel = new Game(spieler, difficulty);
         spiel.spielen();
     }
 }
