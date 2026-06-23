@@ -9,6 +9,13 @@ public class Game {
     private int zielZahl;
     private String hint;
     private Difficulty difficulty;
+
+
+    public Game(Spieler spieler, Difficulty difficulty){
+
+        this.spieler = spieler;
+        this.difficulty = difficulty;
+    }
  
     public void spielen() {
         Scanner scanner = new Scanner(System.in);
@@ -54,6 +61,10 @@ public class Game {
     }
  
     public static void main(String[] args) {
+        
+        Spieler spieler = new Spieler("Anes");
+        Difficulty difficulty = Difficulty.vonNummer(1);
+
         Game spiel = new Game();
         spiel.spielen();
     }
