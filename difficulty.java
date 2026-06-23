@@ -1,3 +1,4 @@
+
 public enum Difficulty {
     LEICHT(50, 8),
     MITTEL(100, 5),

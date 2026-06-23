@@ -1,62 +1,62 @@
 import java.util.Random;
 import java.util.Scanner;
-
+ 
 public class Game {
-
-    // private String spieler; #kommt von Spieler
-    // private int spielerVersuche;
-    // private int guess;
-    //private int maxVersuche;
-    //private int range;
+ 
+    //private int spielerVersuche;
+    //private int guess;
     private Spieler spieler;
     private int zielZahl;
     private String hint;
     private Difficulty difficulty;
-   
-
+ 
     public void spielen() {
         Scanner scanner = new Scanner(System.in);
-
-        range = difficulty.getRange();
-        maxVersuche = difficulty.getMaxVersuche();
-        zielZahl = random.nextInt(range) + 1;
-
         Random random = new Random();
-
-        maxVersuche = 5;
-        range = 100;
-        zielZahl = random.nextInt(range) + 1;
-       //spielerVersuche = 0;
-        guess = 0;
-
-        System.out.println("Ich denke an eine Zahl zwischen 1 und " + range + ".");
-
-        while (guess != zielZahl) {
+ 
+        System.out.println("Schwierigkeit waehlen (LEICHT, MITTEL, SCHWER): ");
+ 
+        zielZahl = random.nextInt(difficulty.getRange()) + 1;
+ 
+        //spielerVersuche = 0;
+        //guess = 0;
+ 
+        System.out.println("Ich denke an eine Zahl zwischen 1 und " + difficulty.getRange() + ".");
+        System.out.println("Du hast " + difficulty.getMaxVersuche() + " Versuche.");
+ 
+        while (true) {
             System.out.print("Dein Tipp: ");
-            guess = scanner.nextInt();
-            spielerVersuche++;
-
-            if (spielerVersuche >= maxVersuche) {
-                System.out.println("You Lose, du hast die maximale Anzahl von " + maxVersuche + " gebraucht.\n" +
+            spieler.setGuess(scanner.nextInt());
+            spieler.versucheErhoehen();
+ 
+            if (spieler.getGuess() == zielZahl) {
+                System.out.println("Richtig! Du hast " + spieler.getVersuche() + " Versuche gebraucht.");
+                break;
+            }
+ 
+            if (spieler.getVersuche() >= difficulty.getMaxVersuche()) {
+                System.out.println("You Lose, du hast die maximale Anzahl von " + difficulty.getMaxVersuche() + " gebraucht.\n" +
                         "Die richtige Zahl war " + zielZahl);
                 break;
             }
-
-            if (guess < zielZahl) {
+ 
+            if (spieler.getGuess() < zielZahl) {
                 hint = "Zu klein";
-            } else if (guess > zielZahl) {
-                hint = "Zu groß";
-            } else {
-                hint = "Richtig! Du hast " + spielerVersuche + " Versuche gebraucht.";
+            } 
+            
+            else {
+                hint = "Zu gross";
             }
             System.out.println(hint);
         }
-
+ 
         scanner.close();
     }
-
+ 
     public static void main(String[] args) {
         Game spiel = new Game();
         spiel.spielen();
     }
 }
+ 
+ 
