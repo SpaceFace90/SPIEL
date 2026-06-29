@@ -37,8 +37,8 @@ public class Schwierigkeit {
             case 3:
                 return SCHWER;
             default:
-                throw new IllegalArgumentException("Unbekannte Schwierigkeit: " + nummer);
-               
+                return null;
+                
         }
     }
 }
