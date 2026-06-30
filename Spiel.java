@@ -2,7 +2,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 // Diese Klasse steuert den gesamten Ablauf vom Spiel
-public class Game {
+public class Spiel {
 
     //private int spielerVersuche;
     //private int guess;
@@ -13,7 +13,7 @@ public class Game {
 
 
     // Baut ein neues Spiel mit Spieler und Schwierigkeit
-     public Game(Spieler spieler, Schwierigkeit schwierigkeit){
+     public Spiel(Spieler spieler, Schwierigkeit schwierigkeit){
 
         this.spieler = spieler;
         this.schwierigkeit = schwierigkeit;
